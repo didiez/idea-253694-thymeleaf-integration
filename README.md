@@ -1,5 +1,7 @@
 # Sample application to test thymeleaf integration in Intellij IDEA (2021.3.1)
 
+https://github.com/didiez/idea-253694-thymeleaf-integration
+
 This app registers three `SpringResourceTemplateResolver` beans:
  - `baseTemplateResolver`: simple template resolver configured with a different prefix
  - `fixedTemplateResolver`: custom template resolver implementation, overriding `computeResourceName(..)`, appending a **CONSTANT** path/string to the configured prefix
