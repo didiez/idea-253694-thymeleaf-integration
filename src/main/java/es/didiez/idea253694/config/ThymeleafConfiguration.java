@@ -3,6 +3,7 @@ package es.didiez.idea253694.config;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.thymeleaf.IEngineConfiguration;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 
@@ -13,11 +14,22 @@ import java.util.Random;
 public class ThymeleafConfiguration {
 
     @Bean
+    SpringResourceTemplateResolver fallbackTemplateResolver(){
+        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+        templateResolver.setOrder(Ordered.LOWEST_PRECEDENCE);
+        templateResolver.setPrefix("classpath:/fallback/templates/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setCacheable(false);
+        return templateResolver;
+    }
+
+    @Bean
     SpringResourceTemplateResolver baseTemplateResolver(){
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setOrder(0);
         templateResolver.setPrefix("classpath:/base/templates/");
         templateResolver.setSuffix(".html");
+        templateResolver.setCheckExistence(true);
         templateResolver.setCacheable(false);
         return templateResolver;
     }

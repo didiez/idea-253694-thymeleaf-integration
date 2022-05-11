@@ -12,3 +12,6 @@ IDEA thymeleaf integration is working for the templates resolved by `baseTemplat
 but NOT working for the other two resolvers, as the prefix needs an extra path (constant or dynamic) appended at runtime, implemented in the `computeResourceName` method.
 
 ![cannot-resolve-departments-error.png](cannot-resolve-departments-error.png)
+
+The `order` attr of `SpringResourceTemplateResolver` beans is not being respected, causing unexpected navigations (Ctrl+click) when a template could be resolved by more than one `SpringResourceTemplateResolver`.
+![wrong-template-order-not-respected.png](wrong-template-order-not-respected.png)
